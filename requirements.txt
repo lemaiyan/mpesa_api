@@ -1,0 +1,16 @@
+django
+gunicorn
+psycopg2
+passlib
+bcrypt
+requests
+celery
+hashids
+urllib3
+dj-static
+django-admin-rangefilter
+django-ckeditor
+django-jet
+ipdb
+Pillow
+djangorestframework

@@ -1,0 +1,17 @@
+machine:
+  python:
+    version: 3.6.0
+
+dependencies:
+  pre:
+    - pip install -r requirements.txt
+
+database:
+  override:
+    - createdb test
+
+test:
+  pre:
+    - python manage.py migrate --settings="configuration.settings.ci"
+  override:
+    - ./manage.py test property_manager.tests --settings="configuration.settings.ci"
