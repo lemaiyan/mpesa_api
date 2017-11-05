@@ -1,5 +1,5 @@
 from django.conf import settings
-from util.http import post, get
+from util.http import get
 
 
 def get_token():

@@ -1,0 +1,31 @@
+from django.conf import settings
+from util.http import post
+from core.models import AuthToken
+import json
+
+
+def send_b2c_request(amount, phone_number, transaction_id, occassion=''):
+    """
+    seds a b2c request
+    :param amount:
+    :param phone_numer:
+    :return:
+    """
+    url = settings.B2C_URL
+    headers = {"Content-Type": 'application/json',
+               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token())}
+    request = dict(
+        InitiatorName=settings.B2C_INITIATOR_NAME,
+        SecurityCredential=settings.B2C_SECURITY_TOKEN,
+        CommandID=settings.B2C_COMMAND_ID,
+        Amount=str(amount),
+        PartyA=settings.B2C_SHORTCODE,
+        PartyB=str(phone_number),
+        Remarks="record-{}".format(str(transaction_id)),
+        QueueTimeOutURL=settings.B2C_QUEUE_TIMEOUT_URL,
+        ResultURL=settings.B2C_RESULT_URL,
+        Occassion=occassion
+    )
+
+    response = post(url=url, headers=headers, data=json.dumps(request))
+    return response.json()

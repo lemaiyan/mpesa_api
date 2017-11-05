@@ -22,6 +22,7 @@ class AuthTokenManager(models.Manager):
             obj = self.get(pk=1)
             if current_time > (obj.expires_in - settings.TOKEN_THRESHOLD):
                 token = get_token()
+                #import ipdb;ipdb.set_trace()
                 access_token = token['access_token']
                 expires = int(time.time()) + int(token['expires_in'])
                 self.filter(pk=1).update(access_token=access_token, expires_in=expires)

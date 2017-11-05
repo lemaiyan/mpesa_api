@@ -138,10 +138,16 @@ JET_SIDE_MENU_COMPACT = True
 MPESA_APP_ACCESS_KEY = 'tc8lexOLOklxPAygnZjenfcYRuy24i2G'
 MPESA_APP_CONSUMER_SECRET = 'HMmJGHNvah0WeJsy'
 MPESA_APP_AUTHTOKEN = 'dGM4bGV4T0xPa2x4UEF5Z25aamVuZmNZUnV5MjRpMkc6SE1tSkdITnZhaDBXZUpzeQ=='
-
+B2C_SECURITY_TOKEN = 'E3Lw64xJ+/ayn1StCP9nu/ObqzgPgCf1IG6JEiubn91QOxkc4u8F0h9NdgjGHaWDHYDEaWxdxqd7uh3ZBsZCrPCm+8ckz8BX/Fqu/x0jOnKzEWwUdbdbFm+hV2q5HJY/EWIq6lnJQeCahkte0TQ6OoVzKyRIUsD4F+pkIIaMkjvqK5mcFWlZQIhoodXd9oBtlo7GWbcYNOjO1+GatYCtVgvjmfWHqI5k4PV/3zjNxvIcTmlB4Ao43fRvXwkRQsvc+8QOUDb6JDO0uF0UhAtz53QLdVmMNmldRoy/nEQ+QrKheY4PhXxnwhrIkFtzWhEG8AhWZjz/Ck4Kr6ePepNEuA=='
+B2C_INITIATOR_NAME = 'testapi409'
+B2C_COMMAND_ID = 'SalaryPayment'
+B2C_SHORTCODE = '601409'
+B2C_QUEUE_TIMEOUT_URL = 'http://mpesa.ngrok.io/mpesa/b2c/timeout'
+B2C_RESULT_URL = 'http://mpesa.ngrok.io/mpesa/b2c/result'
 
 # Urls
 GENERATE_TOKEN_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+B2C_URL = 'https://sandbox.safaricom.co.ke/mpesa/b2c/v1/paymentrequest'
 
 # number of seconds from the expiry we consider the token expired
 TOKEN_THRESHOLD = 600

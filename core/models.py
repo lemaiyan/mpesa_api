@@ -15,5 +15,37 @@ class AuthToken(models.Model):
         db_table ='tbl_access_token'
 
 
+class B2CRequest(models.Model):
+    """
+    Handles B2C requests
+    """
+    id = models.BigAutoField(primary_key=True)
+    phone = models.BigIntegerField()
+    amount = models.DecimalField(max_digits=20, decimal_places=2)
+    conversation_id = models.CharField(max_length=40, blank=True, null=True)
+    originator_conversation_id = models.CharField(max_length=40, blank=True, null=True)
+    response_code = models.CharField(max_length=5, blank=True, null=True)
+    response_description = models.TextField(blank=True, null=True)
+    result_type = models.CharField(max_length=5, blank=True, null=True)
+    result_code = models.CharField(max_length=5, blank=True, null=True)
+    result_description = models.TextField(blank=True, null=True)
+    transaction_id = models.CharField(max_length=20, blank=True, null=True)
+    transaction_receipt = models.CharField(max_length=20, blank=True, null=True)
+    transaction_amount = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    working_funds = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    utility_funds = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    paid_account_funds = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    transaction_date = models.DateTimeField(blank=True, null=True)
+    mpesa_user_name = models.CharField(max_length=100, blank=True, null=True)
+    is_registered_customer = models.CharField(max_length=1, blank=True, null=True)
+    request_id = models.CharField(max_length=20, blank=True, null=True)
+    error_code = models.CharField(max_length=20, blank=True, null=True)
+    error_message = models.TextField(blank=True, null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return str(self.phone)
 
+    class Meta:
+        db_table ='tbl_b2c_requests'
+        verbose_name_plural = 'B2C Requests'
