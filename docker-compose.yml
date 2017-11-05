@@ -20,24 +20,24 @@ services:
       - db
       - rabbitmq
 
-#  worker:
-#    environment:
-#      - DB_NAME=mpesa_api_dev_db
-#      - DB_USER=postgres
-#      - DB_PASSWORD=root
-#      - DB_HOST=db
-#      - DB_PORT=5432
-#      - DJANGO_SETTINGS_MODULE=configuration.settings.development
-#    build: .
-#    command: ./celery.sh
-#    depends_on:
-#      - db
-#      - rabbitmq
-#    volumes:
-#      - ./:/usr/src/app
-#    links:
-#      - db
-#      - rabbitmq
+  worker:
+    environment:
+      - DB_NAME=mpesa_api_dev_db
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DJANGO_SETTINGS_MODULE=configuration.settings.development
+    build: .
+    command: ./celery.sh
+    depends_on:
+      - db
+      - rabbitmq
+    volumes:
+      - ./:/usr/src/app
+    links:
+      - db
+      - rabbitmq
   db:
     image: postgres:9.6
     environment:

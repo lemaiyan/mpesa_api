@@ -35,3 +35,54 @@ def process_b2c_call_response_task(response, id):
         response_code=data.get('ResponseCode', ''),
         response_description=data.get('ResponseDescription', '')
     )
+
+
+@shared_task(name='core.handle_b2c_result_response')
+def process_b2c_result_response_task(response):
+    """
+    Process b2c result
+    :param response:
+    :return:
+    """
+    try:
+        data = response.get('Result', '')
+        update_data = dict()
+        update_data['result_type'] = str(data.get('ResultType', ''))
+        update_data['result_code'] = str(data.get('ResultCode', ''))
+        update_data['result_description'] = data.get('ResultDesc', '')
+        update_data['transaction_id'] = data.get('TransactionID', '')
+
+        params = data.get('ResultParameters', {}).get('ResultParameter', {})
+
+        if len(params) > 0:
+            # means that we have data doe we handle that
+            for p in params:
+                key, value = p.values()
+
+                if key == 'TransactionReceipt':
+                    update_data['transaction_receipt'] = value
+                elif key == 'TransactionAmount':
+                    update_data['transaction_amount'] = value
+                elif key == 'B2CWorkingAccountAvailableFunds':
+                    update_data['working_funds'] = value
+                elif key == 'B2CUtilityAccountAvailableFunds':
+                    rupdate_data['utility_funds'] = value
+                elif key == 'B2CChargesPaidAccountAvailableFunds':
+                    update_data['paid_account_funds'] = value
+                elif key == 'TransactionCompletedDateTime':
+                    date, time = value.split(' ')
+                    day, month, year = date.split('.')
+                    trx_date = '{}-{}-{} {}'.format(year, month, day, time)
+                    update_data['transaction_date'] = trx_date
+                elif key == 'ReceiverPartyPublicName':
+                    _, name = value.split(' - ')
+                    update_data['mpesa_user_name'] = name
+                elif key == 'B2CRecipientIsRegisteredCustomer':
+                    update_data['is_registered_customer'] = value
+
+        # save
+        B2CRequest.objects.filter(
+            originator_conversation_id=data.get('OriginatorConversationID', '')).\
+            update(**update_data)
+    except Exception as ex:
+        pass
