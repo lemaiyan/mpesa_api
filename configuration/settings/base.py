@@ -145,6 +145,12 @@ B2C_SHORTCODE = '601409'
 B2C_QUEUE_TIMEOUT_URL = 'http://mpesa.ngrok.io/mpesa/b2c/timeout'
 B2C_RESULT_URL = 'http://mpesa.ngrok.io/mpesa/b2c/result'
 
+C2B_REGISTER_URL = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl'
+C2B_VALIDATE_URL = 'http://mpesa.ngrok.io/mpesa/c2b/validate'
+C2B_CONFIRMATION_URL = 'http://mpesa.ngrok.io/mpesa/c2b/confirmation'
+C2B_SHORT_CODE = '600000'
+C2B_RESPONSE_TYPE = 'Completed'
+
 # Urls
 GENERATE_TOKEN_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 B2C_URL = 'https://sandbox.safaricom.co.ke/mpesa/b2c/v1/paymentrequest'
