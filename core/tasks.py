@@ -1,7 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 from celery import shared_task
 from util.b2cutils import send_b2c_request
-from core.models import B2CRequest, C2BRequest
+from util.c2butils import process_online_checkout
+from core.models import B2CRequest, C2BRequest, OnlineCheckout
 from decimal import Decimal
 
 
@@ -187,5 +188,117 @@ def process_c2b_confirmation_task(response):
             C2BRequest.objects.filter(transaction_id=response.get('TransID', '')).update(is_completed=True)
         else:
             C2BRequest.objects.create(**data)
+    except Exception as ex:
+        pass
+
+
+@shared_task(name='core.make_online_checkout_call')
+def call_online_checkout_task(phone, amount, account_reference, transaction_desc):
+    """
+    Handle online checkout request
+    :param phone:
+    :param amount:
+    :param transaction_ref:
+    :param transaction_desc:
+    :return:
+    """
+    return process_online_checkout(phone, amount, account_reference, transaction_desc)
+
+
+@shared_task(name='core.handle_online_checkout_response')
+def handle_online_checkout_response_task(response, transaction_id):
+    """
+    Handle checkout response
+    :param response:
+    :param id:
+    :return:
+    """
+    OnlineCheckout.objects.filter(pk=transaction_id).update(
+        checkout_request_id=response.get('CheckoutRequestID', ''),
+        customer_message=response.get('CustomerMessage', ''),
+        merchant_request_id=response.get('MerchantRequestID', ''),
+        response_code=response.get('ResponseCode', ''),
+        response_description=response.get('ResponseDescription', '')
+    )
+
+
+@shared_task(name='core.handle_online_checkout_callback')
+def handle_online_checkout_callback_task(response):
+    """
+    Process the callback response
+    :param response:
+    :return:
+
+     Accepted
+    ========
+    {
+      "Body":{
+        "stkCallback":{
+          "MerchantRequestID":"19465-780693-1",
+          "CheckoutRequestID":"ws_CO_27072017154747416",
+          "ResultCode":0,
+          "ResultDesc":"The service request is processed successfully.",
+          "CallbackMetadata":{
+            "Item":[
+              {
+                "Name":"Amount",
+                "Value":1
+              },
+              {
+                "Name":"MpesaReceiptNumber",
+                "Value":"LGR7OWQX0R"
+              },
+              {
+                "Name":"Balance"
+              },
+              {
+                "Name":"TransactionDate",
+                "Value":20170727154800
+              },
+              {
+                "Name":"PhoneNumber",
+                "Value":254721566839
+              }
+            ]
+          }
+        }
+      }
+    }
+
+    Canceled
+    =========
+    {
+      "Body":{
+        "stkCallback":{
+          "MerchantRequestID":"8555-67195-1",
+          "CheckoutRequestID":"ws_CO_27072017151044001",
+          "ResultCode":1032,
+          "ResultDesc":"[STK_CB - ]Request cancelled by user"
+        }
+      }
+    """
+    try:
+        data = response.get('Body', {}).get('stkCallback', {})
+        update_data = dict()
+        update_data['result_code'] = data.get('ResultCode', '')
+        update_data['result_description'] = data.get('ResultDesc', '')
+
+        meta_data = data.get('CallbackMetadata', {})
+
+        if len(meta_data) > 0:
+            # handle the meta data
+            for item in meta_data:
+                key, values = item.values()
+
+                if key == 'MpesaReceiptNumber':
+                    update_data['mpesa_receipt_number'] = value
+                if key == 'TransactionDate':
+                    date = value
+                    year, month, day, hour, min, sec = date[:4], date[4:-8], date[6:-6], date[8:-4], date[10:-2], date[
+                                                                                                                  12:]
+                    update_data['transaction_date'] = '{}-{}-{} {}:{}:{}'.format(year, month, day, hour, min, sec)
+
+        # save
+        OnlineCheckout.objects.filter(checkout_request_id=data.get('CheckoutRequestID', '')).update(**update_data)
     except Exception as ex:
         pass
