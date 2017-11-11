@@ -1,5 +1,6 @@
 from django.db import models
-from util.managers import AuthTokenManager
+
+from mpesa_api.util.managers import AuthTokenManager
 
 
 class AuthToken(models.Model):

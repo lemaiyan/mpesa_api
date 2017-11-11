@@ -1,6 +1,6 @@
 from django.contrib import admin
-from core.models import B2CRequest
-from django.contrib.admin.utils import flatten_fieldsets
+
+from mpesa_api.core.models import B2CRequest
 
 
 @admin.register(B2CRequest)

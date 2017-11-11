@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class CoreConfig(AppConfig):
-    name = 'core'
+    name = 'mpesa_api.core'
 
     def ready(self):
-        import core.signals
+        pass

@@ -18,7 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^mpesa/', include('core.urls', 'core')),
-    url(r'^jet/', include('jet.urls', 'jet')),
-    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    url(r'^mpesa/', include('mpesa_api.core.urls', 'mpesa')),
 ]

@@ -1,7 +1,9 @@
-from django.conf import settings
-from util.http import post
-from core.models import AuthToken
 import json
+
+from django.conf import settings
+
+from mpesa_api.core.models import AuthToken
+from mpesa_api.util.http import post
 
 
 def send_b2c_request(amount, phone_number, transaction_id, occassion=''):

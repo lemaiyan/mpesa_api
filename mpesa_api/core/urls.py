@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from core.views import B2cResult, B2cTimeOut, C2bConfirmation, C2bValidation, \
+
+from mpesa_api.core.views import B2cResult, B2cTimeOut, C2bConfirmation, C2bValidation, \
     OnlineCheckoutCallback
 
 urlpatterns = [

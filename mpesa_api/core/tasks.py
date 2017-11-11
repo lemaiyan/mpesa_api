@@ -1,9 +1,12 @@
 from __future__ import absolute_import, unicode_literals
-from celery import shared_task
-from util.b2cutils import send_b2c_request
-from util.c2butils import process_online_checkout
-from core.models import B2CRequest, C2BRequest, OnlineCheckout
+
 from decimal import Decimal
+
+from celery import shared_task
+
+from mpesa_api.core.models import B2CRequest, C2BRequest, OnlineCheckout
+from mpesa_api.util.c2butils import process_online_checkout
+from mpesa_api.util.b2cutils import send_b2c_request
 
 
 @shared_task(name='core.b2c_call')

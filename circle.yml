@@ -12,6 +12,6 @@ database:
 
 test:
   pre:
-    - python manage.py migrate --settings="configuration.settings.ci"
+    - python manage.py migrate --settings="config.settings.ci"
   override:
-    - ./manage.py test property_manager.tests --settings="configuration.settings.ci"
+    - ./manage.py test property_manager.tests --settings="config.settings.ci"

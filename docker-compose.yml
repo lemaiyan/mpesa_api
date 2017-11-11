@@ -7,7 +7,7 @@ services:
       - DB_PASSWORD=root
       - DB_HOST=db
       - DB_PORT=5432
-      - DJANGO_SETTINGS_MODULE=configuration.settings.development
+      - DJANGO_SETTINGS_MODULE=config.settings.development
     build: .
     depends_on:
       - db
@@ -27,7 +27,7 @@ services:
       - DB_PASSWORD=root
       - DB_HOST=db
       - DB_PORT=5432
-      - DJANGO_SETTINGS_MODULE=configuration.settings.development
+      - DJANGO_SETTINGS_MODULE=config.settings.development
     build: .
     command: ./celery.sh
     depends_on:

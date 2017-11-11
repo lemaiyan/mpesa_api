@@ -1,9 +1,11 @@
-from django.conf import settings
-from util.http import post
-from core.models import AuthToken
+import base64
 import json
 from datetime import datetime
-import base64
+
+from django.conf import settings
+
+from mpesa_api.core.models import AuthToken
+from mpesa_api.util.http import post
 
 
 def register_c2b_url():
