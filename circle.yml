@@ -14,4 +14,4 @@ test:
   pre:
     - python manage.py migrate --settings="config.settings.ci"
   override:
-    - ./manage.py test  --settings="config.settings.ci"
+    - ./manage.py test mpesa_api.core.tests --settings="config.settings.ci"
