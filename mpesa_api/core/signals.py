@@ -1,5 +1,5 @@
 from celery import chain
-from core.tasks import send_b2c_request_task, process_b2c_call_response_task, \
+from mpesa_api.core.tasks import send_b2c_request_task, process_b2c_call_response_task, \
     call_online_checkout_task, handle_online_checkout_response_task
 from django.db.models.signals import post_save
 from django.dispatch import receiver

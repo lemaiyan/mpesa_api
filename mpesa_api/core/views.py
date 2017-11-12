@@ -21,7 +21,7 @@ class B2cTimeOut(APIView):
         :return:
         """
         data = request.data
-        return Response(dict(success="0"))
+        return Response(dict(value='ok', key='status', detail='success'))
 
 
 class B2cResult(APIView):
@@ -38,7 +38,7 @@ class B2cResult(APIView):
         """
         data = request.data
         chain(process_b2c_result_response_task.s(data)).apply_async(queue='b2c_result')
-        return Response(dict(success="0"))
+        return Response(dict(value='ok', key='status', detail='success'))
 
 
 class C2bValidation(APIView):
@@ -55,7 +55,7 @@ class C2bValidation(APIView):
         """
         data = request.data
         chain(process_c2b_validation_task.s(data)).apply_async(queue='c2b_validation')
-        return Response(dict(accept="0"))
+        return Response(dict(value='ok', key='status', detail='success'))
 
 
 class C2bConfirmation(APIView):
@@ -72,7 +72,7 @@ class C2bConfirmation(APIView):
         """
         data = request.data
         chain(process_c2b_confirmation_task.s(data)).apply_async(queue='c2b_confirmation')
-        return Response(dict(accept="0"))
+        return Response(dict(value='ok', key='status', detail='success'))
 
 
 class OnlineCheckoutCallback(APIView):
@@ -89,4 +89,4 @@ class OnlineCheckoutCallback(APIView):
         """
         data = request.data
         chain(handle_online_checkout_callback_task.s(data)).apply_async(queue='online_checkout_callback')
-        return Response(dict(accept="0"))
+        return Response(dict(value='ok', key='status', detail='success'))

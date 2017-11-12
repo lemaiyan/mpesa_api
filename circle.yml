@@ -14,4 +14,4 @@ test:
   pre:
     - python manage.py migrate --settings="config.settings.ci"
   override:
-    - ./manage.py test property_manager.tests --settings="config.settings.ci"
+    - ./manage.py test  --settings="config.settings.ci"
