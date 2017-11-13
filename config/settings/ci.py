@@ -10,3 +10,9 @@ DATABASES = {
         'HOST': '127.0.0.1',
     }
 }
+
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+# Celery
+CELERY_BROKER_URL = 'amqp://localhost:5672'
