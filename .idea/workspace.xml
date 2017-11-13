@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="873aba8e-fc67-4a59-ab81-c2e938780b6b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/circle.yml" afterPath="$PROJECT_DIR$/circle.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/settings/ci.py" afterPath="$PROJECT_DIR$/config/settings/ci.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/settings/base.py" afterPath="$PROJECT_DIR$/config/settings/base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docker-compose.yml" afterPath="$PROJECT_DIR$/docker-compose.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mpesa_api/core/apps.py" afterPath="$PROJECT_DIR$/mpesa_api/core/apps.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mpesa_api/core/signals.py" afterPath="$PROJECT_DIR$/mpesa_api/core/signals.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mpesa_api/core/tasks.py" afterPath="$PROJECT_DIR$/mpesa_api/core/tasks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mpesa_api/core/tests.py" afterPath="$PROJECT_DIR$/mpesa_api/core/tests.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,31 +24,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="c2butils.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/mpesa_api/util/c2butils.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="37" column="42" lean-forward="false" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="42" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mocks.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/mpesa_api/util/mocks.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2080">
-                  <caret line="130" column="1" lean-forward="false" selection-start-line="130" selection-start-column="1" selection-end-line="130" selection-end-column="1" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="signals.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/mpesa_api/core/signals.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="448">
-                  <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="36" selection-end-column="62" />
+                <state relative-caret-position="49">
+                  <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -52,11 +36,41 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/mpesa_api/core/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="celery.sh" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/celery.sh">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="16">
+                  <caret line="1" column="158" lean-forward="false" selection-start-line="1" selection-start-column="158" selection-end-line="1" selection-end-column="158" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="132">
+                  <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="39" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="tasks.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/mpesa_api/core/tasks.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2192">
-                  <caret line="145" column="4" lean-forward="false" selection-start-line="145" selection-start-column="4" selection-end-line="159" selection-end-column="5" />
+                <state relative-caret-position="292">
+                  <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
                   <folding>
                     <element signature="e#0#56#0" expanded="true" />
                   </folding>
@@ -67,8 +81,8 @@
           <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/mpesa_api/core/tests.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2256">
-                  <caret line="156" column="70" lean-forward="false" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
+                <state relative-caret-position="289">
+                  <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#59#0" expanded="true" />
                   </folding>
@@ -76,53 +90,43 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/settings/base.py">
+          <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/mpesa_api/core/apps.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="506">
-                  <caret line="164" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ci.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/config/settings/ci.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+                <state relative-caret-position="16">
+                  <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
                   <folding>
-                    <element signature="e#0#19#0" expanded="true" />
+                    <element signature="e#0#33#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="circle.yml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/circle.yml">
+          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/mpesa_api/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="64">
-                  <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+          <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/requirements.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="96">
-                  <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+                <state relative-caret-position="80">
+                  <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="development.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/config/settings/development.py">
+          <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/config/settings/base.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="20" selection-end-column="56" />
+                <state relative-caret-position="428">
+                  <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
                   <folding />
                 </state>
               </provider>
@@ -195,7 +199,6 @@
         <option value="$PROJECT_DIR$/util/b2cutils.py" />
         <option value="$PROJECT_DIR$/configuration/urls.py" />
         <option value="$PROJECT_DIR$/core/admin.py" />
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/core/urls.py" />
         <option value="$PROJECT_DIR$/configuration/settings/base.py" />
         <option value="$PROJECT_DIR$/core/signals.py" />
@@ -204,11 +207,9 @@
         <option value="$PROJECT_DIR$/core/tasks.py" />
         <option value="$PROJECT_DIR$/core/views.py" />
         <option value="$PROJECT_DIR$/celery.sh" />
-        <option value="$PROJECT_DIR$/mpesa_api/core/tasks.py" />
         <option value="$PROJECT_DIR$/run.sh" />
         <option value="$PROJECT_DIR$/README.md.py" />
         <option value="$PROJECT_DIR$/config/setup.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/config/urls.py" />
         <option value="$PROJECT_DIR$/config/wsgi.py" />
         <option value="$PROJECT_DIR$/MANIFEST.in" />
@@ -217,11 +218,17 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/mpesa_api/util/tests.py" />
         <option value="$PROJECT_DIR$/mpesa_api/core/views.py" />
-        <option value="$PROJECT_DIR$/mpesa_api/core/signals.py" />
         <option value="$PROJECT_DIR$/mpesa_api/util/mocks.py" />
-        <option value="$PROJECT_DIR$/mpesa_api/core/tests.py" />
         <option value="$PROJECT_DIR$/circle.yml" />
         <option value="$PROJECT_DIR$/config/settings/ci.py" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/mpesa_api/core/tests.py" />
+        <option value="$PROJECT_DIR$/mpesa_api/core/__init__.py" />
+        <option value="$PROJECT_DIR$/mpesa_api/core/apps.py" />
+        <option value="$PROJECT_DIR$/mpesa_api/core/signals.py" />
+        <option value="$PROJECT_DIR$/config/settings/base.py" />
+        <option value="$PROJECT_DIR$/mpesa_api/core/tasks.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -231,8 +238,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1440" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1629" />
     <option name="y" value="23" />
     <option name="width" value="1920" />
     <option name="height" value="1015" />
@@ -367,7 +374,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="23" width="1920" height="1015" extended-state="0" />
+    <frame x="1441" y="23" width="1920" height="1015" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -409,9 +416,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/configuration/settings/ci.py" />
-    <entry file="file://$PROJECT_DIR$/util/core.py" />
     <entry file="file://$USER_HOME$/Library/Caches/PyCharm2017.2/remote_sources/1108094511/-337502517/celery/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -439,13 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="39" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/tests.py" />
     <entry file="file://$PROJECT_DIR$/core/urls.py" />
     <entry file="file://$PROJECT_DIR$/configuration/settings/base.py" />
@@ -454,13 +451,6 @@
     <entry file="file://$PROJECT_DIR$/core/tasks.py" />
     <entry file="file://$PROJECT_DIR$/core/signals.py" />
     <entry file="file://$PROJECT_DIR$/core/views.py" />
-    <entry file="file://$PROJECT_DIR$/celery.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="1" column="158" lean-forward="false" selection-start-line="1" selection-start-column="158" selection-end-line="1" selection-end-column="158" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/models.py" />
     <entry file="file://$PROJECT_DIR$/run.sh">
       <provider selected="true" editor-type-id="text-editor">
@@ -533,6 +523,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" column="37" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -547,6 +540,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#11#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -554,6 +550,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="6" selection-end-line="85" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#28#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -561,6 +560,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="35">
           <caret line="58" column="38" lean-forward="false" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -580,41 +580,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mpesa_api/core/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2192">
-          <caret line="145" column="4" lean-forward="false" selection-start-line="145" selection-start-column="4" selection-end-line="159" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mpesa_api/util/mocks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2080">
           <caret line="130" column="1" lean-forward="false" selection-start-line="130" selection-start-column="1" selection-end-line="130" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mpesa_api/core/signals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="34" column="4" lean-forward="false" selection-start-line="34" selection-start-column="4" selection-end-line="36" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mpesa_api/core/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2256">
-          <caret line="156" column="70" lean-forward="false" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -628,14 +598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/settings/development.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -644,18 +606,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/settings/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="164" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/circle.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
-          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -665,8 +619,96 @@
         <state relative-caret-position="272">
           <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/celery.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="158" lean-forward="false" selection-start-line="1" selection-start-column="158" selection-end-line="1" selection-end-column="158" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="22" column="2" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="39" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mpesa_api/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mpesa_api/core/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mpesa_api/core/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mpesa_api/core/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/settings/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mpesa_api/core/signals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mpesa_api/core/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

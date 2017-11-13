@@ -7,6 +7,7 @@ from celery import shared_task
 from mpesa_api.core.models import B2CRequest, C2BRequest, OnlineCheckout
 from mpesa_api.util.c2butils import process_online_checkout
 from mpesa_api.util.b2cutils import send_b2c_request
+from celery.contrib import rdb
 
 
 @shared_task(name='core.b2c_call')
@@ -39,6 +40,7 @@ def process_b2c_call_response_task(response, id):
         response_code=data.get('ResponseCode', ''),
         response_description=data.get('ResponseDescription', '')
     )
+    rdb.set_trace()
 
 
 @shared_task(name='core.handle_b2c_result_response')

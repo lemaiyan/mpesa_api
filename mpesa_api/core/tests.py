@@ -9,7 +9,7 @@ from mpesa_api.util import mocks
 from mpesa_api.util.b2cutils import send_b2c_request
 from mpesa_api.util.c2butils import register_c2b_url, process_online_checkout
 from django.urls import reverse
-from mpesa_api.core.signals import handle_b2c_request_post_save
+from mpesa_api.core import signals
 from django.db.models.signals import post_save
 from mpesa_api.core.tasks import process_b2c_call_response_task, send_b2c_request_task, \
     call_online_checkout_task, handle_online_checkout_response_task
@@ -114,6 +114,10 @@ class B2CMethodsTest(TestCase):
         self.assertTrue(chain(send_b2c_request_task.s(100, 254708374149, 1),
                               process_b2c_call_response_task.s(1)).apply_async())
 
+    def tearDown(self):
+        post_save.connect(signals.handle_b2c_request_post_save,
+                          sender=B2CRequest)
+
 
 @mock.patch('requests.get', side_effect=mock_requests_get)
 @mock.patch('requests.post', side_effect=mock_requests_post)
@@ -156,3 +160,7 @@ class C2BMethodTest(TestCase):
         self.assertTrue(
             chain(call_online_checkout_task.s(254708374149, 100, '', ''),
                   handle_online_checkout_response_task.s(1)).apply_async())
+
+    def tearDown(self):
+        post_save.connect(signals.handle_online_checkout_post_save,
+                          sender=OnlineCheckout)
