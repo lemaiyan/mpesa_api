@@ -4,7 +4,8 @@ from decimal import Decimal
 
 from celery import shared_task
 
-from mpesa_api.core.models import B2CRequest, C2BRequest, OnlineCheckout
+from mpesa_api.core.models import B2CRequest, C2BRequest, OnlineCheckout, \
+    B2CResponse, OnlineCheckoutResponse
 from mpesa_api.util.c2butils import process_online_checkout
 from mpesa_api.util.b2cutils import send_b2c_request
 from celery.contrib import rdb
@@ -57,6 +58,8 @@ def process_b2c_result_response_task(response):
         update_data['result_code'] = str(data.get('ResultCode', ''))
         update_data['result_description'] = data.get('ResultDesc', '')
         update_data['transaction_id'] = data.get('TransactionID', '')
+        update_data['originator_conversation_id'] = data.get('OriginatorConversationID', '')
+        update_data['conversation_id'] = data.get('ConversationID', '')
 
         params = data.get('ResultParameters', {}).get('ResultParameter', {})
 
@@ -69,6 +72,7 @@ def process_b2c_result_response_task(response):
                     update_data['transaction_receipt'] = value
                 elif key == 'TransactionAmount':
                     update_data['transaction_amount'] = value
+                    update_data['amount'] = value
                 elif key == 'B2CWorkingAccountAvailableFunds':
                     update_data['working_funds'] = value
                 elif key == 'B2CUtilityAccountAvailableFunds':
@@ -81,15 +85,14 @@ def process_b2c_result_response_task(response):
                     trx_date = '{}-{}-{} {}'.format(year, month, day, time)
                     update_data['transaction_date'] = trx_date
                 elif key == 'ReceiverPartyPublicName':
-                    _, name = value.split(' - ')
+                    phone, name = value.split(' - ')
                     update_data['mpesa_user_name'] = name
+                    update_data['phone'] = int(phone)
                 elif key == 'B2CRecipientIsRegisteredCustomer':
                     update_data['is_registered_customer'] = value
 
         # save
-        B2CRequest.objects.filter(
-            originator_conversation_id=data.get('OriginatorConversationID', '')).\
-            update(**update_data)
+        B2CResponse.objects.create(**update_data)
     except Exception as ex:
         pass
 
@@ -287,6 +290,8 @@ def handle_online_checkout_callback_task(response):
         update_data = dict()
         update_data['result_code'] = data.get('ResultCode', '')
         update_data['result_description'] = data.get('ResultDesc', '')
+        update_data['checkout_request_id'] = data.get('CheckoutRequestID', '')
+        update_data['merchant_request_id'] = data.get('MerchantRequestID', '')
 
         meta_data = data.get('CallbackMetadata', {})
 
@@ -297,6 +302,10 @@ def handle_online_checkout_callback_task(response):
 
                 if key == 'MpesaReceiptNumber':
                     update_data['mpesa_receipt_number'] = value
+                if key == 'Amount':
+                    update_data['amount'] = Decimal(value)
+                if key == 'PhoneNumber':
+                    update_data['phone'] = int(value)
                 if key == 'TransactionDate':
                     date = value
                     year, month, day, hour, min, sec = date[:4], date[4:-8], date[6:-6], date[8:-4], date[10:-2], date[
@@ -304,6 +313,6 @@ def handle_online_checkout_callback_task(response):
                     update_data['transaction_date'] = '{}-{}-{} {}:{}:{}'.format(year, month, day, hour, min, sec)
 
         # save
-        OnlineCheckout.objects.filter(checkout_request_id=data.get('CheckoutRequestID', '')).update(**update_data)
+                OnlineCheckoutResponse.objects.create(**update_data)
     except Exception as ex:
         pass

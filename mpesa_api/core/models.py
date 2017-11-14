@@ -27,6 +27,28 @@ class B2CRequest(models.Model):
     originator_conversation_id = models.CharField(max_length=40, blank=True, null=True)
     response_code = models.CharField(max_length=5, blank=True, null=True)
     response_description = models.TextField(blank=True, null=True)
+    request_id = models.CharField(max_length=20, blank=True, null=True)
+    error_code = models.CharField(max_length=20, blank=True, null=True)
+    error_message = models.TextField(blank=True, null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.phone)
+
+    class Meta:
+        db_table ='tbl_b2c_requests'
+        verbose_name_plural = 'B2C Requests'
+
+
+class B2CResponse(models.Model):
+    """
+    Handles B2C Response
+    """
+    id = models.BigAutoField(primary_key=True)
+    phone = models.BigIntegerField(blank=True, null=True)
+    amount = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    conversation_id = models.CharField(max_length=40, blank=True, null=True)
+    originator_conversation_id = models.CharField(max_length=40, blank=True, null=True)
     result_type = models.CharField(max_length=5, blank=True, null=True)
     result_code = models.CharField(max_length=5, blank=True, null=True)
     result_description = models.TextField(blank=True, null=True)
@@ -39,17 +61,13 @@ class B2CRequest(models.Model):
     transaction_date = models.DateTimeField(blank=True, null=True)
     mpesa_user_name = models.CharField(max_length=100, blank=True, null=True)
     is_registered_customer = models.CharField(max_length=1, blank=True, null=True)
-    request_id = models.CharField(max_length=20, blank=True, null=True)
-    error_code = models.CharField(max_length=20, blank=True, null=True)
-    error_message = models.TextField(blank=True, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.phone)
 
     class Meta:
-        db_table ='tbl_b2c_requests'
-        verbose_name_plural = 'B2C Requests'
+        db_table = 'tbl_b2c_response'
+        verbose_name_plural = 'B2C Responses'
 
 
 class C2BRequest(models.Model):
@@ -97,10 +115,6 @@ class OnlineCheckout(models.Model):
     merchant_request_id = models.CharField(max_length=50, blank=True, null=True)
     response_code = models.CharField(max_length=5, blank=True, null=True)
     response_description = models.CharField(max_length=100, blank=True, null=True)
-    result_code = models.CharField(max_length=5, blank=True, null=True)
-    result_description = models.CharField(max_length=100, blank=True, null=True)
-    mpesa_receipt_number = models.CharField(max_length=50, blank=True, null=True)
-    transaction_date = models.DateTimeField(blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -108,4 +122,27 @@ class OnlineCheckout(models.Model):
 
     class Meta:
         db_table = 'tbl_online_checkout_requests'
-        verbose_name_plural = 'Online Checkout'
+        verbose_name_plural = 'Online Checkout Requests'
+
+
+class OnlineCheckoutResponse(models.Model):
+    """
+    Handles Online Checkout Response
+    """
+    id = models.BigAutoField(primary_key=True)
+    merchant_request_id = models.CharField(max_length=50, blank=True, null=True)
+    checkout_request_id = models.CharField(max_length=50, default='')
+    result_code = models.CharField(max_length=5, blank=True, null=True)
+    result_description = models.CharField(max_length=100, blank=True, null=True)
+    mpesa_receipt_number = models.CharField(max_length=50, blank=True, null=True)
+    transaction_date = models.DateTimeField(blank=True, null=True)
+    phone = models.BigIntegerField(blank=True, null=True)
+    amount = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.phone)
+
+    class Meta:
+        db_table = 'tbl_online_checkout_responses'
+        verbose_name_plural = 'Online Checkout Responses'
