@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/lemaiyan/mpesa_api.svg?style=svg)](https://circleci.com/gh/lemaiyan/mpesa_api)
 ##Installation
 
 `pip install mpesa-api` or 
