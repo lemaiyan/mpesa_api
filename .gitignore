@@ -66,3 +66,5 @@ venv.bak/
 .idea/
 logfile
 /src
+.pypirc
+/dist
