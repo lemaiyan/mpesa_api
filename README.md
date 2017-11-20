@@ -1,8 +1,19 @@
 [![CircleCI](https://circleci.com/gh/lemaiyan/mpesa_api.svg?style=svg)](https://circleci.com/gh/lemaiyan/mpesa_api)
-##Installation
+
+
+## Installation
 
 `pip install mpesa-api` or 
 `pip install -e git+https://github.com/lemaiyan/mpesa_api.git#egg=mpesa_api`
+
+
+## Requirements 
+
+- Python 3.4+
+- Django 1.11.7+
+- Celery 4.1.0+
+- djangorestframework 3.7.3+
+- requests 2.18.4+
 
 Add the following to installed apps
 
