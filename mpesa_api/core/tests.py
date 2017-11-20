@@ -3,7 +3,8 @@ import requests
 from unittest import mock
 from django.conf import settings
 from mpesa_api.util.mpesautils import get_token
-from mpesa_api.core.models import B2CRequest, AuthToken, OnlineCheckout
+from mpesa_api.core.models import B2CRequest, OnlineCheckout
+from mpesa_api.core.mpesa import Mpesa
 from mpesa_api.core import tasks
 from mpesa_api.util import mocks
 from mpesa_api.util.b2cutils import send_b2c_request
@@ -80,7 +81,7 @@ class FetchTokenTest(TestCase):
 @override_settings(CELERY_ALWAYS_EAGER=True)
 class B2CMethodsTest(TestCase):
     def setUp(self):
-        self.req = B2CRequest.objects.create(phone=254708374149, amount=100.0)
+        self.req = Mpesa.b2c_request(phone=254708374149, amount=100.0)
 
     def test_successful_b2c_request(self, mock_post, mock_get):
         response = send_b2c_request(int(self.req.amount), self.req.phone, self.req.id)
@@ -106,7 +107,7 @@ class B2CMethodsTest(TestCase):
     @mock.patch('mpesa_api.core.signals.handle_b2c_request_post_save', autospec=True)
     def test_b2c__post_save_signal(self, mock_signal, mock_post, mock_get):
         post_save.connect(mock_signal, sender=B2CRequest, dispatch_uid='test_b2c_request_post_save')
-        B2CRequest.objects.create(phone=254708374149, amount=100.0)
+        Mpesa.b2c_request(phone=254708374149, amount=100.0)
         self.assertEquals(mock_signal.call_count, 1)
         post_save.disconnect(mock_signal, sender=B2CRequest, dispatch_uid='test_b2c_request_post_save')
 
@@ -124,11 +125,11 @@ class B2CMethodsTest(TestCase):
 @override_settings(CELERY_ALWAYS_EAGER=True)
 class C2BMethodTest(TestCase):
     def test_register_c2b_url(self, mock_post, mock_get):
-        response = register_c2b_url()
+        response = Mpesa.c2b_register_url()
         self.assertEqual(mocks.REGISTER_URL_SUCCESS, response)
 
     def setUp(self):
-        self.request = OnlineCheckout.objects.create(phone=254708374149, amount=100.0)
+        self.request = Mpesa.stk_push(phone=254708374149, amount=100.0)
 
     def test_successful_online_checkout_response(self, mock_post, mock_get):
         resp = process_online_checkout(self.request.phone, int(self.request.amount))
@@ -152,7 +153,7 @@ class C2BMethodTest(TestCase):
     @mock.patch('mpesa_api.core.signals.handle_online_checkout_post_save', autospec=True)
     def test_c2b_post_save_signal(self, mock_signal, mock_post, mock_get):
         post_save.connect(mock_signal, sender=OnlineCheckout, dispatch_uid='test_online_request_post_save')
-        OnlineCheckout.objects.create(phone=254708374149, amount=100.0)
+        Mpesa.stk_push(phone=254708374149, amount=100.0)
         self.assertEquals(mock_signal.call_count, 1)
         post_save.disconnect(mock_signal, sender=OnlineCheckout, dispatch_uid='test_online_request_post_save')
 
