@@ -1,8 +1,6 @@
-from celery import chain
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from  mpesa_api.core.signals import *
 
 from mpesa_api.core.tasks import process_b2c_result_response_task, \
     process_c2b_confirmation_task, process_c2b_validation_task, \

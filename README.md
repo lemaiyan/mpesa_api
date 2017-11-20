@@ -15,6 +15,16 @@
 - djangorestframework 3.7.3+
 - requests 2.18.4+
 
+## Setup
+
+Add the following in the `urls.py`
+```python
+urlpatterns = [
+    ...
+    url(r'^mpesa/', include('mpesa_api.core.urls', 'mpesa')),
+    ...
+]
+```
 Add the following to installed apps
 
 ```python
