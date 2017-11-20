@@ -1,6 +1,7 @@
 ##Installation
 
-`pip install mpesa-api`
+`pip install mpesa-api` or 
+`pip install -e git+https://github.com/lemaiyan/mpesa_api.git#egg=mpesa_api`
 
 Add the following to installed apps
 

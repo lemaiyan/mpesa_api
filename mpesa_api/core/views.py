@@ -59,7 +59,7 @@ class C2bValidation(APIView):
         data = request.data
         process_c2b_validation_task.apply_async(
             args=(data,),
-            queue=c2b_validation
+            queue="c2b_validation"
         )
         return Response(dict(value='ok', key='status', detail='success'))
 
