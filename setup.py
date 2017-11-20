@@ -8,7 +8,8 @@ setup(
     description='Mpesa B2C, C2B, Online Checkout api for Django',
     author='Jijo Lemaiyan',
     author_email='george@lemaiyan.xyz',
-    url='https://bitbucket.org/lemaiyan/mpesa_api',
+    url='https://github.com/lemaiyan/mpesa_api',
+    download_url='https://github.com/lemaiyan/mpesa_api/archive/0.1.tar.gz',
     requires=[
         'Django (>=1.11.7)',
         'djangorestframework (>=3.7.3)',
