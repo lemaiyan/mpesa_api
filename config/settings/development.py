@@ -25,20 +25,18 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
         },
-    },
-    'formatters': {
-        'verbose': {
-            'format': '%(asctime)s %(levelname)s module=%(module)s, '
-                      'process_id=%(process)d, path=%(pathname)s, environment=%(environment)s, %(message)s'
-        }
+        'logfile': {
+            'level':'DEBUG',
+            'class':'logging.FileHandler',
+            'filename': BASE_DIR + "/../logfile",
+        },
     },
     'root': {
         'level': 'INFO',
-        'handlers': ['console']
+        'handlers': ['console', 'logfile']
     },
 }
 

@@ -57,7 +57,10 @@ class C2bValidation(APIView):
         :return:
         """
         data = request.data
-        chain(process_c2b_validation_task.s(data)).apply_async(queue='c2b_validation')
+        process_c2b_validation_task.apply_async(
+            args=(data,),
+            queue=c2b_validation
+        )
         return Response(dict(value='ok', key='status', detail='success'))
 
 
@@ -74,7 +77,10 @@ class C2bConfirmation(APIView):
         :return:
         """
         data = request.data
-        chain(process_c2b_confirmation_task.s(data)).apply_async(queue='c2b_confirmation')
+        process_c2b_confirmation_task.apply_async(
+            args=(data,),
+            queue='c2b_confirmation'
+        )
         return Response(dict(value='ok', key='status', detail='success'))
 
 
@@ -91,5 +97,8 @@ class OnlineCheckoutCallback(APIView):
         :return:
         """
         data = request.data
-        chain(handle_online_checkout_callback_task.s(data)).apply_async(queue='online_checkout_callback')
+        handle_online_checkout_callback_task.apply_async(
+            args=(data,),
+            queue='online_checkout_callback'
+        )
         return Response(dict(value='ok', key='status', detail='success'))

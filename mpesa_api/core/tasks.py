@@ -9,6 +9,8 @@ from mpesa_api.core.models import B2CRequest, C2BRequest, OnlineCheckout, \
 from mpesa_api.util.c2butils import process_online_checkout
 from mpesa_api.util.b2cutils import send_b2c_request
 from celery.contrib import rdb
+import logging
+logger = logging.getLogger(__name__)
 
 
 @shared_task(name='core.b2c_call')
@@ -313,6 +315,8 @@ def handle_online_checkout_callback_task(response):
                     update_data['transaction_date'] = '{}-{}-{} {}:{}:{}'.format(year, month, day, hour, min, sec)
 
         # save
-                OnlineCheckoutResponse.objects.create(**update_data)
+        OnlineCheckoutResponse.objects.create(**update_data)
+        logger.info(dict(updated_data=update_data))
     except Exception as ex:
-        pass
+        logger.error(ex)
+        raise ValueError(str(ex))
