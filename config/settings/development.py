@@ -39,5 +39,3 @@ LOGGING = {
         'handlers': ['console', 'logfile']
     },
 }
-
-
