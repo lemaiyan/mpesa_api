@@ -15,7 +15,7 @@ def send_b2c_request(amount, phone_number, transaction_id, occassion=''):
     """
     url = settings.B2C_URL
     headers = {"Content-Type": 'application/json',
-               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token())}
+               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token('b2c'))}
     request = dict(
         InitiatorName=settings.B2C_INITIATOR_NAME,
         SecurityCredential=settings.B2C_SECURITY_TOKEN,

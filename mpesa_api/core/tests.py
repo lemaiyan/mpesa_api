@@ -71,7 +71,7 @@ class FetchTokenTest(TestCase):
 
     @mock.patch('requests.get', side_effect=mock_requests_get)
     def test_token_is_fetched_as_expected(self, mock_get):
-        response = get_token()
+        response = get_token('c2b')
         self.assertEqual(response, mocks.SUCCESS_TOKEN_REQUEST)
         self.assertTrue(mock_get.called)
 
