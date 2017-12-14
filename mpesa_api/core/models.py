@@ -6,6 +6,7 @@ from mpesa_api.util.managers import AuthTokenManager
 class AuthToken(models.Model):
     """Handles AuthTokens"""
     access_token = models.CharField(max_length=40);
+    type = models.CharField(max_length=3)
     expires_in = models.BigIntegerField()
     objects = AuthTokenManager()
 

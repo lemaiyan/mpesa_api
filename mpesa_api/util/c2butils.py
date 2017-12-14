@@ -15,7 +15,7 @@ def register_c2b_url():
     """
     url = settings.C2B_REGISTER_URL
     headers = {"Content-Type": 'application/json',
-               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token())}
+               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token('c2b'))}
     body = dict(
         ShortCode=settings.C2B_SHORT_CODE,
         ResponseType=settings.C2B_RESPONSE_TYPE,
@@ -37,7 +37,7 @@ def process_online_checkout(msisdn, amount, account_reference='', transaction_de
     """
     url = settings.C2B_ONLINE_CHECKOUT_URL
     headers = {"Content-Type": 'application/json',
-               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token())}
+               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token('c2b'))}
     timestamp = str(datetime.now())[:-7].replace('-', '').replace(' ', '').replace(':', '')
     password = base64.b64encode(bytes('{}{}{}'.format(settings.C2B_ONLINE_SHORT_CODE, settings.C2B_ONLINE_PASSKEY,
                                                       timestamp), 'utf-8')).decode('utf-8')
