@@ -41,10 +41,8 @@ Add the following in your settings file get the values from [https://developer.s
 ...
 MPESA_B2C_ACCESS_KEY = 'Mpesa b2c access Key'
 MPESA_B2C_CONSUMER_SECRET = 'Mpesa b2c consumer secret'
-MPESA_B2C_AUTHTOKEN = 'mpesa b2c token'
 MPESA_C2B_ACCESS_KEY = 'Mpesa c2b access Key'
 MPESA_C2B_CONSUMER_SECRET = 'Mpesa c2b consumer secret'
-MPESA_C2B_AUTHTOKEN = 'mpesa c2b auth token'
 B2C_SECURITY_TOKEN = 'b2c security token'
 B2C_INITIATOR_NAME = 'b2c initiator name'
 B2C_COMMAND_ID = 'Sb2c command id'

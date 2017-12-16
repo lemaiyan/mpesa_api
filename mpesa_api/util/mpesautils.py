@@ -1,5 +1,5 @@
 from django.conf import settings
-
+import base64
 from mpesa_api.util.http import get
 
 
@@ -10,10 +10,18 @@ def get_token(type):
     :return: JSON
     """
     url = settings.GENERATE_TOKEN_URL
-    auth_token = settings.MPESA_B2C_AUTHTOKEN
+    auth_token = encode_str_to_base_64(settings.MPESA_C2B_ACCESS_KEY + ':' + settings.MPESA_C2B_CONSUMER_SECRET)
     if type.lower() == 'c2b':
-        auth_token = settings.MPESA_C2B_AUTHTOKEN
+        auth_token = encode_str_to_base_64(settings.MPESA_B2C_ACCESS_KEY + ':' + settings.MPESA_B2C_CONSUMER_SECRET)
     headers = {"Authorization": "Basic {}".format(auth_token)}
     response = get(url, headers)
     return response.json()
 
+
+def encode_str_to_base_64(str_to_encode):
+    """
+    Encodes the a given string to base64
+    :param str_to_encode: str to encode
+    :return: base64 encoded str
+    """
+    return base64.urlsafe_b64encode(str_to_encode.encode('UTF-8')).decode('ascii')
