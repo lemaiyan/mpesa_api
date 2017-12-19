@@ -101,6 +101,10 @@ class C2BRequest(models.Model):
         db_table ='tbl_c2b_requests'
         verbose_name_plural = 'C2B Requests'
 
+    @property
+    def name(self):
+        return '{} {} {}'.format(self.first_name, self.middle_name, self.last_name)
+
 
 class OnlineCheckout(models.Model):
     """

@@ -5,3 +5,4 @@ requests
 celery
 ipdb
 djangorestframework
+django-admin-rangefilter
