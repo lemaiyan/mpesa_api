@@ -1,6 +1,7 @@
 from mpesa_api.core.models import B2CRequest, OnlineCheckout
 from mpesa_api.util import exceptions, c2butils
 from decimal import Decimal
+import uuid
 
 
 class Mpesa:
@@ -49,6 +50,7 @@ class Mpesa:
         try:
             return OnlineCheckout.objects.create(phone=int(phone),
                                                  amount=Decimal(str(amount)),
-                                                 account_reference=account_reference,)
+                                                 account_reference=account_reference,
+                                                 transaction_description=uuid.uuid4().hex)
         except Exception as ex:
             raise exceptions.StkPushMpesaError(str(ex))

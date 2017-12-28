@@ -37,7 +37,3 @@ def handle_online_checkout_post_save(sender, instance, **Kwargs):
     chain(call_online_checkout_task.s(instance.phone, int(instance.amount), instance.account_reference,
                                       instance.transaction_description),
           handle_online_checkout_response_task.s(instance.id)).apply_async(queue='online_checkout_request')
-
-
-# post_save.connect(handle_b2c_request_post_save, sender=B2CRequest)
-# post_save.connect(handle_online_checkout_post_save, sender=OnlineCheckout)

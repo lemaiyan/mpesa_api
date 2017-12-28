@@ -129,10 +129,10 @@ class C2BMethodTest(TestCase):
         self.assertEqual(mocks.REGISTER_URL_SUCCESS, response)
 
     def setUp(self):
-        self.request = Mpesa.stk_push(phone=254708374149, amount=100.0)
+        self.request = Mpesa.stk_push(phone=254708374149, amount=100.0, account_reference='Test')
 
     def test_successful_online_checkout_response(self, mock_post, mock_get):
-        resp = process_online_checkout(self.request.phone, int(self.request.amount))
+        resp = process_online_checkout(self.request.phone, int(self.request.amount), 'Test', 'test')
         self.assertEqual(mocks.ONLINE_REQUEST_RESPONSE, resp)
 
     def test_success_online_checkout_url(self, mock_post, mock_get):
@@ -153,7 +153,7 @@ class C2BMethodTest(TestCase):
     @mock.patch('mpesa_api.core.signals.handle_online_checkout_post_save', autospec=True)
     def test_c2b_post_save_signal(self, mock_signal, mock_post, mock_get):
         post_save.connect(mock_signal, sender=OnlineCheckout, dispatch_uid='test_online_request_post_save')
-        Mpesa.stk_push(phone=254708374149, amount=100.0)
+        Mpesa.stk_push(phone=254708374149, amount=100.0, account_reference='Test')
         self.assertEquals(mock_signal.call_count, 1)
         post_save.disconnect(mock_signal, sender=OnlineCheckout, dispatch_uid='test_online_request_post_save')
 
