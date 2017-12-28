@@ -6,6 +6,7 @@ from django.conf import settings
 
 from mpesa_api.core.models import AuthToken
 from mpesa_api.util.http import post
+import uuid
 
 
 def register_c2b_url():
@@ -26,13 +27,12 @@ def register_c2b_url():
     return response.json()
 
 
-def process_online_checkout(msisdn, amount, account_reference='', transaction_desc=''):
+def process_online_checkout(msisdn, amount, account_reference):
     """
     Handle the online checkout
     :param msisdn:
     :param amount:
     :param account_reference:
-    :param transaction_desc:
     :return:
     """
     url = settings.C2B_ONLINE_CHECKOUT_URL
@@ -51,8 +51,8 @@ def process_online_checkout(msisdn, amount, account_reference='', transaction_de
         PartyB=settings.C2B_ONLINE_SHORT_CODE,
         PhoneNumber=str(msisdn),
         CallBackURL=settings.C2B_ONLINE_CHECKOUT_CALLBACK_URL,
-        AccountReference='ref-'.format(account_reference),
-        TransactionDesc='desc-'.format(transaction_desc)
+        AccountReference=account_reference,
+        TransactionDesc=uuid.uuid4().hex
     )
     response = post(url=url, headers=headers, data=json.dumps(body))
     return response.json()
