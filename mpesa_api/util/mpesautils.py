@@ -10,9 +10,11 @@ def get_token(type):
     :return: JSON
     """
     url = settings.GENERATE_TOKEN_URL
-    auth_token = encode_str_to_base_64(settings.MPESA_C2B_ACCESS_KEY + ':' + settings.MPESA_C2B_CONSUMER_SECRET)
-    if type.lower() == 'c2b':
-        auth_token = encode_str_to_base_64(settings.MPESA_B2C_ACCESS_KEY + ':' + settings.MPESA_B2C_CONSUMER_SECRET)
+    concat_str = '{}:{}'.format(settings.MPESA_C2B_ACCESS_KEY, settings.MPESA_C2B_CONSUMER_SECRET)
+    auth_token = encode_str_to_base_64(concat_str)
+    if type.lower() == 'b2c':
+        concat_str = '{}:{}'.format(settings.MPESA_B2C_ACCESS_KEY, settings.MPESA_B2C_CONSUMER_SECRET)
+        auth_token = encode_str_to_base_64(concat_str)
     headers = {"Authorization": "Basic {}".format(auth_token)}
     response = get(url, headers)
     return response.json()
