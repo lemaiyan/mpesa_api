@@ -68,3 +68,4 @@ logfile
 /src
 .pypirc
 /dist
+/config/settings/base.py
