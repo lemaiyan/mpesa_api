@@ -1,6 +1,6 @@
-django==1.11.7
+django==2.1.7
 gunicorn
-psycopg2
+psycopg2-binary
 requests
 celery
 ipdb
