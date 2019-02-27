@@ -36,7 +36,7 @@ jobs:
             . venv/bin/activate
             python manage.py check --settings=config.settings.ci
             python manage.py migrate --settings=config.settings.ci
-            coverage run  manage.py test  --settings=config.settings.ci
+            coverage run manage.py test mpesa_api.core.tests --settings=config.settings.ci
             coverage report
             coverage xml
       - run:
