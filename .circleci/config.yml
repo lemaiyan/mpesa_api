@@ -37,10 +37,6 @@ jobs:
             python manage.py check --settings=config.settings.ci
             python manage.py migrate --settings=config.settings.ci
             python manage.py test mpesa_api.core.tests --settings=config.settings.ci
-      - run:
-          name: get coverage report
-          command: |
-            . venv/bin/activate
             coverage xml
       - run:
           name: upload codecov report
