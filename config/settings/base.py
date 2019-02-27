@@ -210,6 +210,5 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=mpesa_api.core',
-    '--with-xunit',
-    '--xunit-file=coverage.xml'
+    'xml',
 ]
