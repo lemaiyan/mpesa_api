@@ -5,15 +5,15 @@ jobs:
     docker:
       - image: circleci/python:3.6.1
         environment:
-          DB_USER: postgres
-          DB_NAME: mpesa_api_db
+          DB_USER: circleci
+          DB_NAME: circle_test
           DB_PASSWORD: "root"
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
       - image: circleci/postgres:9.6.2
         environment:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: mpesa_api_db
+          POSTGRES_USER: circleci
+          POSTGRES_DB: circle_test
           POSTGRES_PASSWORD: "root"
       - image: brandembassy/rabbitmq:latest
 
