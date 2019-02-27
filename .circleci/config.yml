@@ -39,7 +39,9 @@ jobs:
             python manage.py test mpesa_api.core.tests --settings=config.settings.ci
       - run:
           name: get coverage report
-          command: coverage xml
+          command: |
+            . venv/bin/activate
+            coverage xml
       - run:
           name: upload codecov report
           command: bash <(curl -s https://codecov.io/bash) -t 65a50f05-6f90-4a02-8a44-f9e0cfd76a58
