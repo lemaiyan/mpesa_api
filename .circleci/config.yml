@@ -16,9 +16,6 @@ jobs:
           POSTGRES_DB: mpesa_api_db
           POSTGRES_PASSWORD: "root"
       - image: gonkulatorlabs/rabbitmq:3.6.1
-        ports:
-        - "15672:15672"
-        - "5672:5672"
 
     steps:
       - checkout
