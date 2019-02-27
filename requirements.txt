@@ -7,3 +7,4 @@ ipdb
 djangorestframework
 django-admin-rangefilter
 coverage
+django-nose
