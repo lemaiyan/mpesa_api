@@ -1,4 +1,7 @@
 [![CircleCI](https://circleci.com/gh/lemaiyan/mpesa_api.svg?style=svg)](https://circleci.com/gh/lemaiyan/mpesa_api)
+[![codecov](https://codecov.io/gh/lemaiyan/mpesa_api/branch/master/graph/badge.svg)](https://codecov.io/gh/lemaiyan/mpesa_api)
+
+
 ## Status
 As of now the following services are done
 * B2C
