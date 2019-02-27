@@ -37,6 +37,7 @@ jobs:
             python manage.py check --settings=config.settings.ci
             python manage.py migrate --settings=config.settings.ci
             python manage.py test mpesa_api.core.tests --settings=config.settings.ci
+            coverage xml
       - run:
           name: upload codecov report
           command: bash <(curl -s https://codecov.io/bash) -t 65a50f05-6f90-4a02-8a44-f9e0cfd76a58

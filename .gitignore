@@ -68,3 +68,5 @@ logfile
 /src
 .pypirc
 /dist
+coverage/
+coverage.xml
