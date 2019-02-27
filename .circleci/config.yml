@@ -15,7 +15,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_DB: mpesa_api_db
           POSTGRES_PASSWORD: "root"
-      - image: gonkulatorlabs/rabbitmq:3.6.1
+      - image: brandembassy/rabbitmq:latest
 
     steps:
       - checkout
