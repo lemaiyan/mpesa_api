@@ -11,9 +11,9 @@ coverage:
       default: false  # disable the default status that measures entire project
         tests:  # declare a new status context "tests"
           target: 100%  # we always want 100% coverage here
-          paths: "tests/"  # only include coverage in "tests/" folder
+          paths: "mpesa_api/tests/"  # only include coverage in "tests/" folder
         app:  # declare a new status context "app"
-          paths: "!tests/"  # remove all files in "tests/"
+          paths: "!mpesa_api/tests/"  # remove all files in "tests/"
     patch: yes
     changes: no
 
