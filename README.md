@@ -1,5 +1,20 @@
 [![CircleCI](https://circleci.com/gh/lemaiyan/mpesa_api.svg?style=svg)](https://circleci.com/gh/lemaiyan/mpesa_api)
+[![codecov](https://codecov.io/gh/lemaiyan/mpesa_api/branch/master/graph/badge.svg)](https://codecov.io/gh/lemaiyan/mpesa_api)
 
+
+## Status
+As of now the following services are done
+* B2C
+* C2B
+* STK PUSH
+
+The pending services are
+* Reversal
+* Transaction Status
+* Account Balance
+* B2B
+
+If you have a free pair of hands let me know.
 
 ## Installation
 
@@ -10,7 +25,7 @@
 ## Requirements 
 
 - Python 3.4+
-- Django 1.11.7+
+- Django 2.1.7+
 - Celery 4.1.0+
 - djangorestframework 3.7.3+
 - requests 2.18.4+
@@ -21,7 +36,7 @@ Add the following in the `urls.py`
 ```python
 urlpatterns = [
     ...
-    url(r'^mpesa/', include('mpesa_api.core.urls', 'mpesa')),
+    path('mpesa/', include('mpesa_api.core.urls', 'mpesa')),
     ...
 ]
 ```
@@ -39,35 +54,72 @@ Add the following in your settings file get the values from [https://developer.s
 
 ```python
 ...
-MPESA_B2C_ACCESS_KEY = 'Mpesa b2c access Key'
-MPESA_B2C_CONSUMER_SECRET = 'Mpesa b2c consumer secret'
-MPESA_C2B_ACCESS_KEY = 'Mpesa c2b access Key'
-MPESA_C2B_CONSUMER_SECRET = 'Mpesa c2b consumer secret'
-B2C_SECURITY_TOKEN = 'b2c security token'
-B2C_INITIATOR_NAME = 'b2c initiator name'
-B2C_COMMAND_ID = 'Sb2c command id'
-B2C_SHORTCODE = 'b2c shortcode'
-B2C_QUEUE_TIMEOUT_URL = 'b2c queue timeout url'
-B2C_RESULT_URL = 'b2c result url'
+# B2C (Bulk Payment) Configs
+# see https://developer.safaricom.co.ke/test_credentials
+# https://developer.safaricom.co.ke/b2c/apis/post/paymentrequest
 
-C2B_REGISTER_URL = 'c2b register url'
-C2B_VALIDATE_URL = 'c2b validate url'
-C2B_CONFIRMATION_URL = 'c2b confirmation url'
-C2B_SHORT_CODE = 'c2b short code'
+#Consumer Key
+MPESA_B2C_ACCESS_KEY = 'bmmI3UPlJa3pt8GqDG1Fu9D7cKy5YooF'
+#Consumer Secret
+MPESA_B2C_CONSUMER_SECRET = 'dee8AzvwJKNoZ3YW'
+# This is the encryption of the scurity Credentials I used the Developer site to encrypt it.
+B2C_SECURITY_TOKEN = 'E3Lw64xJ+/ayn1StCP9nu/ObqzgPgCf1IG6JEiubn91QOxkc4u8F0h9NdgjGHaWDHYDEaWxdxqd7uh3ZBsZCrPCm+8ckz8BX/Fqu/x0jOnKzEWwUdbdbFm+hV2q5HJY/EWIq6lnJQeCahkte0TQ6OoVzKyRIUsD4F+pkIIaMkjvqK5mcFWlZQIhoodXd9oBtlo7GWbcYNOjO1+GatYCtVgvjmfWHqI5k4PV/3zjNxvIcTmlB4Ao43fRvXwkRQsvc+8QOUDb6JDO0uF0UhAtz53QLdVmMNmldRoy/nEQ+QrKheY4PhXxnwhrIkFtzWhEG8AhWZjz/Ck4Kr6ePepNEuA=='
+#InitiatorName
+B2C_INITIATOR_NAME = 'testapi409'
+# CommandID
+B2C_COMMAND_ID = 'SalaryPayment'
+#PartyA
+B2C_SHORTCODE = '601409'
+# this is the url where Mpesa  will post in case of a time out. Replace http://mpesa.ngrok.io/  with your url ow here this app is running
+B2C_QUEUE_TIMEOUT_URL = 'http://mpesa.ngrok.io/mpesa/b2c/timeout'
+# this is the url where Mpesa will post the result. Replace http://mpesa.ngrok.io/  with your url ow here this app is running
+B2C_RESULT_URL = 'http://mpesa.ngrok.io/mpesa/b2c/result'
+# this is the url where we post the B2C request to Mpesa. Replace this with the url you get from safaricom after you have passed the UATS
+B2C_URL = 'https://sandbox.safaricom.co.ke/mpesa/b2c/v1/paymentrequest'
+
+# C2B (Paybill) Configs
+# See https://developer.safaricom.co.ke/c2b/apis/post/registerurl
+
+#Consumer Secret
+MPESA_C2B_ACCESS_KEY = 'bmmI3UPlJa3pt8GqDG1Fu9D7cKy5YooF'
+# Consumer Key
+MPESA_C2B_CONSUMER_SECRET = 'dee8AzvwJKNoZ3YW'
+# Url for registering your paybill replace it the url you get from safaricom after you have passed the UATS
+C2B_REGISTER_URL = 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl'
+#ValidationURL
+# replace http://mpesa.ngrok.io/ with your url ow here this app is running
+C2B_VALIDATE_URL = 'http://mpesa.ngrok.io/mpesa/c2b/validate'
+#ConfirmationURL
+# replace http://mpesa.ngrok.io/ with your url ow here this app is running
+C2B_CONFIRMATION_URL = 'http://mpesa.ngrok.io/mpesa/c2b/confirmation'
+#ShortCode (Paybill)
+C2B_SHORT_CODE = '600000'
+#ResponseType
 C2B_RESPONSE_TYPE = 'Completed'
 
-C2B_ONLINE_CHECKOUT_URL = 'c2b online checkout url'
-C2B_ONLINE_CHECKOUT_CALLBACK_URL = 'online checkout callback url'
+# C2B (STK PUSH) Configs
+# https://developer.safaricom.co.ke/lipa-na-m-pesa-online/apis/post/stkpush/v1/processrequest
+
+# Url for sending the STK push request replace it the url you get from safaricom after you have passed the UATS
+C2B_ONLINE_CHECKOUT_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+# Where the Mpesa will post the response
+#replace http://mpesa.ngrok.io/ with your url ow here this app is running
+C2B_ONLINE_CHECKOUT_CALLBACK_URL = 'http://mpesa.ngrok.io/mpesa/c2b/online_checkout/callback'
+# TransactionType
 C2B_TRANSACTION_TYPE = 'CustomerPayBillOnline'
-C2B_ONLINE_PASSKEY = 'c2b online passkey'
-C2B_ONLINE_SHORT_CODE = 'c2b online short code'
+# The Pass Key provided by Safaricom when you pass UAT's
+# See https://developer.safaricom.co.ke/test_credentials
+C2B_ONLINE_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+# Your Paybill
+C2B_ONLINE_SHORT_CODE = '174379'
 
-# Urls
-GENERATE_TOKEN_URL = 'auth url'
-B2C_URL = 'b2c url'
+# URL generate OAUTH token
+# See https://developer.safaricom.co.ke/oauth/apis/get/generate-1
+GENERATE_TOKEN_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
-# number of seconds from the expiry we consider the token expired 
-# the token expires after an hour 
+
+# number of seconds from the expiry we consider the token expired the token expires after an hour
+# so if the token is 600 sec (10 minutes) to expiry we consider the token expired.
 TOKEN_THRESHOLD = 600
 
 ...
@@ -146,4 +198,6 @@ Mpesa.c2b_register_url() # registers the validate and confirmation url's for b2c
 # starts online checkout on given number 
 Mpesa.stk_push(254700000000, 100, account_reference='', transaction_desc='')
 ```
+
+You can view your transaction under django Admin.
 
