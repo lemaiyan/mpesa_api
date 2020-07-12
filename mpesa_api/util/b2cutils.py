@@ -1,21 +1,20 @@
-import json
-
 from django.conf import settings
 
 from mpesa_api.core.models import AuthToken
 from mpesa_api.util.http import post
 
 
-def send_b2c_request(amount, phone_number, transaction_id, occassion=''):
+def send_b2c_request(amount, phone_number, transaction_id, occassion=""):
     """
     seds a b2c request
     :param amount:
     :param phone_numer:
     :return:
     """
-    url = settings.B2C_URL
-    headers = {"Content-Type": 'application/json',
-               'Authorization': 'Bearer {}'.format(AuthToken.objects.get_token('b2c'))}
+    url = f"{settings.MPESA_URL}/mpesa/b2c/v1/paymentrequest"
+    headers = {
+        "Authorization": "Bearer {}".format(AuthToken.objects.get_token("b2c"))
+    }
     request = dict(
         InitiatorName=settings.B2C_INITIATOR_NAME,
         SecurityCredential=settings.B2C_SECURITY_TOKEN,
@@ -26,8 +25,8 @@ def send_b2c_request(amount, phone_number, transaction_id, occassion=''):
         Remarks="record-{}".format(str(transaction_id)),
         QueueTimeOutURL=settings.B2C_QUEUE_TIMEOUT_URL,
         ResultURL=settings.B2C_RESULT_URL,
-        Occassion=occassion
+        Occassion=occassion,
     )
 
-    response = post(url=url, headers=headers, data=json.dumps(request))
+    response = post(url=url, headers=headers, data=request)
     return response.json()

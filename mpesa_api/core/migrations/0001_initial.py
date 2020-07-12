@@ -9,19 +9,24 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='AuthToken',
+            name="AuthToken",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('access_token', models.CharField(max_length=40)),
-                ('expires_in', models.BigIntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("access_token", models.CharField(max_length=40)),
+                ("expires_in", models.BigIntegerField()),
             ],
-            options={
-                'db_table': 'tbl_access_token',
-            },
+            options={"db_table": "tbl_access_token",},
         ),
     ]

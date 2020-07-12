@@ -8,23 +8,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0009_onlinecheckout'),
+        ("core", "0009_onlinecheckout"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='onlinecheckout',
-            name='account_reference',
-            field=models.CharField(default='', max_length=20),
+            model_name="onlinecheckout",
+            name="account_reference",
+            field=models.CharField(default="", max_length=20),
         ),
         migrations.AddField(
-            model_name='onlinecheckout',
-            name='transaction_description',
+            model_name="onlinecheckout",
+            name="transaction_description",
             field=models.CharField(blank=True, max_length=50, null=True),
         ),
         migrations.AlterField(
-            model_name='onlinecheckout',
-            name='checkout_request_id',
-            field=models.CharField(default='', max_length=20),
+            model_name="onlinecheckout",
+            name="checkout_request_id",
+            field=models.CharField(default="", max_length=20),
         ),
     ]

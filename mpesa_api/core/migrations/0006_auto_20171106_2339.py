@@ -8,12 +8,9 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0005_c2brequests'),
+        ("core", "0005_c2brequests"),
     ]
 
     operations = [
-        migrations.RenameModel(
-            old_name='C2bRequests',
-            new_name='C2BRequest',
-        ),
+        migrations.RenameModel(old_name="C2bRequests", new_name="C2BRequest",),
     ]

@@ -8,23 +8,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_b2crequest'),
+        ("core", "0002_b2crequest"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='b2crequest',
-            name='error_code',
+            model_name="b2crequest",
+            name="error_code",
             field=models.CharField(blank=True, max_length=20, null=True),
         ),
         migrations.AddField(
-            model_name='b2crequest',
-            name='error_message',
+            model_name="b2crequest",
+            name="error_message",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='b2crequest',
-            name='request_id',
+            model_name="b2crequest",
+            name="request_id",
             field=models.CharField(blank=True, max_length=20, null=True),
         ),
     ]

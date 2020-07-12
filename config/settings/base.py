@@ -150,7 +150,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.abspath(os.path.join(PROJECT_DIR, 'static'))
@@ -211,15 +210,11 @@ C2B_RESPONSE_TYPE = config('C2B_RESPONSE_TYPE')
 
 #replace http://mpesa.ngrok.io/ with your url ow here this app is running
 C2B_ONLINE_CHECKOUT_CALLBACK_URL = config('C2B_ONLINE_CHECKOUT_CALLBACK_URL')
-# TransactionType
-C2B_TRANSACTION_TYPE = config('C2B_TRANSACTION_TYPE')
 # The Pass Key provided by Safaricom when you pass UAT's
 # See https://developer.safaricom.co.ke/test_credentials
 C2B_ONLINE_PASSKEY = config('C2B_ONLINE_PASSKEY')
 # Your Paybill
 C2B_ONLINE_SHORT_CODE = config('C2B_ONLINE_SHORT_CODE')
-
-
 # number of seconds from the expiry we consider the token expired the token expires after an hour
 # so if the token is 600 sec (10 minutes) to expiry we consider the token expired.
 TOKEN_THRESHOLD = config('TOKEN_THRESHOLD')
