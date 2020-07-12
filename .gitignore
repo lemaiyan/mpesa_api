@@ -70,3 +70,4 @@ logfile
 /dist
 coverage/
 coverage.xml
+.env
