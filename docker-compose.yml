@@ -2,12 +2,12 @@ version: '2'
 services:
   app:
     environment:
-      - DB_NAME=mpesa_api_dev_db
-      - DB_USER=postgres
-      - DB_PASSWORD=root
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DJANGO_SETTINGS_MODULE=config.settings.development
+      - DB_NAME=$DB_NAME
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_HOST=$DB_HOST
+      - DB_PORT=$DB_PORT
+      - DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
     build: .
     depends_on:
       - db
@@ -22,14 +22,14 @@ services:
 
   worker:
     environment:
-      - DB_NAME=mpesa_api_dev_db
-      - DB_USER=postgres
-      - DB_PASSWORD=root
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DJANGO_SETTINGS_MODULE=config.settings.development
+      - DB_NAME=$DB_NAME
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_HOST=$DB_HOST
+      - DB_PORT=$DB_PORT
+      - DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
     build: .
-    command: ./celery.sh
+    command: ./worker.sh
     depends_on:
       - db
       - rabbitmq
@@ -39,16 +39,16 @@ services:
       - db
       - rabbitmq
   db:
-    image: postgres:9.6
+    image: postgres:12.3-alpine
     environment:
-      - POSTGRES_DB=mpesa_api_dev_db
-      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=$DB_NAME
+      - POSTGRES_PASSWORD=$DB_PASSWORD
     volumes:
       - /var/lib/postgresql/data
     ports:
       - 5432:5432
   rabbitmq:
-    image: gonkulatorlabs/rabbitmq:3.6.1 #this has management plugin enabled
+    image: rabbitmq:3.8.5-management #this has management plugin enabled
     ports:
       - 15672:15672
       - 5671:5671
