@@ -9,7 +9,7 @@ setup(
     author='Jijo Lemaiyan',
     author_email='george@lemaiyan.xyz',
     url='https://github.com/lemaiyan/mpesa_api',
-    download_url='https://github.com/lemaiyan/mpesa_api/archive/0.1.8.tar.gz',
+    download_url='https://github.com/lemaiyan/mpesa_api/archive/0.2.0.tar.gz',
     requires=[
         'Django (>=2.1.7)',
         'djangorestframework (>=3.7.3)',
