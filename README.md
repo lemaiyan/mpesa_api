@@ -24,7 +24,7 @@ If you have a free pair of hands let me know.
 
 ## Requirements 
 
-- Python 3.4+
+- Python 3.8+
 - Django 2.1.7+
 - Celery 4.1.0+
 - djangorestframework 3.7.3+
