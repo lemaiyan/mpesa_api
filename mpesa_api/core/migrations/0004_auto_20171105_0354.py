@@ -8,13 +8,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0003_auto_20171105_0351'),
+        ("core", "0003_auto_20171105_0351"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='b2crequest',
-            old_name='paod_account_funds',
-            new_name='paid_account_funds',
+            model_name="b2crequest",
+            old_name="paod_account_funds",
+            new_name="paid_account_funds",
         ),
     ]

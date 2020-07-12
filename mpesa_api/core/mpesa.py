@@ -8,6 +8,7 @@ class Mpesa:
     """
     Class that wraps the given mpesa functionality
     """
+
     @staticmethod
     def b2c_request(phone, amount):
         """
@@ -17,8 +18,9 @@ class Mpesa:
         :return: B2CRequest object
         """
         try:
-            return B2CRequest.objects.create(phone=int(phone),
-                                             amount=Decimal(str(amount)))
+            return B2CRequest.objects.create(
+                phone=int(phone), amount=Decimal(str(amount))
+            )
         except Exception as ex:
             raise exceptions.B2CMpesaError(str(ex))
 
@@ -48,9 +50,11 @@ class Mpesa:
         :return: OnlineCheckout object
         """
         try:
-            return OnlineCheckout.objects.create(phone=int(phone),
-                                                 amount=Decimal(str(amount)),
-                                                 account_reference=account_reference,
-                                                 transaction_description=uuid.uuid4().hex)
+            return OnlineCheckout.objects.create(
+                phone=int(phone),
+                amount=Decimal(str(amount)),
+                account_reference=account_reference,
+                transaction_description=uuid.uuid4().hex,
+            )
         except Exception as ex:
             raise exceptions.StkPushMpesaError(str(ex))

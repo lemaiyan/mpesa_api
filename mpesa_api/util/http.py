@@ -9,11 +9,7 @@ def post(url, headers, data):
     :param data:
     :return:
     """
-    request = requests.post(
-        url=url,
-        headers=headers,
-        data=data
-    )
+    request = requests.post(url=url, headers=headers, json=data)
 
     return request
 
@@ -25,9 +21,6 @@ def get(url, headers):
     :param headers:
     :return:
     """
-    request = requests.get(
-        url=url,
-        headers=headers
-    )
+    request = requests.get(url=url, headers=headers)
 
     return request

@@ -8,29 +8,56 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0008_c2brequest_transaction_id'),
+        ("core", "0008_c2brequest_transaction_id"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='OnlineCheckout',
+            name="OnlineCheckout",
             fields=[
-                ('id', models.BigAutoField(primary_key=True, serialize=False)),
-                ('phone', models.BigIntegerField()),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=20)),
-                ('checkout_request_id', models.CharField(blank=True, max_length=50, null=True)),
-                ('customer_message', models.CharField(blank=True, max_length=100, null=True)),
-                ('merchant_request_id', models.CharField(blank=True, max_length=20, null=True)),
-                ('response_code', models.CharField(blank=True, max_length=5, null=True)),
-                ('response_description', models.CharField(blank=True, max_length=100, null=True)),
-                ('result_code', models.CharField(blank=True, max_length=5, null=True)),
-                ('result_description', models.CharField(blank=True, max_length=100, null=True)),
-                ('mpesa_receipt_number', models.CharField(blank=True, max_length=20, null=True)),
-                ('date_added', models.DateTimeField(auto_now_add=True)),
+                ("id", models.BigAutoField(primary_key=True, serialize=False)),
+                ("phone", models.BigIntegerField()),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, max_digits=20),
+                ),
+                (
+                    "checkout_request_id",
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    "customer_message",
+                    models.CharField(blank=True, max_length=100, null=True),
+                ),
+                (
+                    "merchant_request_id",
+                    models.CharField(blank=True, max_length=20, null=True),
+                ),
+                (
+                    "response_code",
+                    models.CharField(blank=True, max_length=5, null=True),
+                ),
+                (
+                    "response_description",
+                    models.CharField(blank=True, max_length=100, null=True),
+                ),
+                (
+                    "result_code",
+                    models.CharField(blank=True, max_length=5, null=True),
+                ),
+                (
+                    "result_description",
+                    models.CharField(blank=True, max_length=100, null=True),
+                ),
+                (
+                    "mpesa_receipt_number",
+                    models.CharField(blank=True, max_length=20, null=True),
+                ),
+                ("date_added", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name_plural': 'Online Checkout',
-                'db_table': 'tbl_online_checkout_requests',
+                "verbose_name_plural": "Online Checkout",
+                "db_table": "tbl_online_checkout_requests",
             },
         ),
     ]

@@ -3,15 +3,17 @@ SUCCESS_B2C_SEND_RESPONSE = {
     "ConversationID": "﻿AG_20171106_00004a65b655b9f47b4e",
     "OriginatorConversationID": "Service is currently under maintenance. Please try again later",
     "ResponseCode": "0",
-    "ResponseDescription": "﻿The service request has been accepted successfully."
+    "ResponseDescription": "﻿The service request has been accepted successfully.",
 }
 SUCCESS_TOKEN_REQUEST = {
     "access_token": "ugqniOdaIapbTs8AkGPZPGHmRzjm",
-    "expires_in": "3599"
+    "expires_in": "3599",
 }
-FAILED_B2C_SEND_RESPONSE = {'errorCode': '500.002.1001',
-                            'errorMessage': 'Service is currently under maintenance. Please try again later',
-                            'requestId': '8953-1200747-1'}
+FAILED_B2C_SEND_RESPONSE = {
+    "errorCode": "500.002.1001",
+    "errorMessage": "Service is currently under maintenance. Please try again later",
+    "requestId": "8953-1200747-1",
+}
 
 B2C_SUCCESSFUL_RESULT = {
     "Result": {
@@ -23,61 +25,43 @@ B2C_SUCCESSFUL_RESULT = {
         "TransactionID": "LGH3197RIB",
         "ResultParameters": {
             "ResultParameter": [
-                {
-                    "Key": "TransactionReceipt",
-                    "Value": "LGH3197RIB"
-                },
-                {
-                    "Key": "TransactionAmount",
-                    "Value": 8000
-                },
-                {
-                    "Key": "B2CWorkingAccountAvailableFunds",
-                    "Value": 150000
-                },
-                {
-                    "Key": "B2CUtilityAccountAvailableFunds",
-                    "Value": 133568
-                },
+                {"Key": "TransactionReceipt", "Value": "LGH3197RIB"},
+                {"Key": "TransactionAmount", "Value": 8000},
+                {"Key": "B2CWorkingAccountAvailableFunds", "Value": 150000},
+                {"Key": "B2CUtilityAccountAvailableFunds", "Value": 133568},
                 {
                     "Key": "TransactionCompletedDateTime",
-                    "Value": "17.07.2017 10:54:57"
+                    "Value": "17.07.2017 10:54:57",
                 },
                 {
                     "Key": "ReceiverPartyPublicName",
-                    "Value": "254708374149 - John Doe"
+                    "Value": "254708374149 - John Doe",
                 },
-                {
-                    "Key": "B2CChargesPaidAccountAvailableFunds",
-                    "Value": 0
-                },
-                {
-                    "Key": "B2CRecipientIsRegisteredCustomer",
-                    "Value": "Y"
-                }
+                {"Key": "B2CChargesPaidAccountAvailableFunds", "Value": 0},
+                {"Key": "B2CRecipientIsRegisteredCustomer", "Value": "Y"},
             ]
         },
         "ReferenceData": {
             "ReferenceItem": {
                 "Key": "QueueTimeoutURL",
-                "Value": "https://internalsandbox.safaricom.co.ke/mpesa/b2cresults/v1/submit"
+                "Value": "https://internalsandbox.safaricom.co.ke/mpesa/b2cresults/v1/submit",
             }
-        }
+        },
     }
 }
 
 REGISTER_URL_SUCCESS = {
-    'ConversationID': '',
-    'OriginatorCoversationID': '',
-    'ResponseDescription': 'success'
+    "ConversationID": "",
+    "OriginatorCoversationID": "",
+    "ResponseDescription": "success",
 }
 
 ONLINE_REQUEST_RESPONSE = {
-    'CheckoutRequestID': 'ws_CO_12112017210342725',
-    'CustomerMessage': 'Success. Request accepted for processing',
-    'MerchantRequestID': '4799-1246731-1',
-    'ResponseCode': '0',
-    'ResponseDescription': 'Success. Request accepted for processing'
+    "CheckoutRequestID": "ws_CO_12112017210342725",
+    "CustomerMessage": "Success. Request accepted for processing",
+    "MerchantRequestID": "4799-1246731-1",
+    "ResponseCode": "0",
+    "ResponseDescription": "Success. Request accepted for processing",
 }
 
 ONLINE_SUCCESS_RESPONSE = {
@@ -89,27 +73,13 @@ ONLINE_SUCCESS_RESPONSE = {
             "ResultDesc": "The service request is processed successfully.",
             "CallbackMetadata": {
                 "Item": [
-                    {
-                        "Name": "Amount",
-                        "Value": 1
-                    },
-                    {
-                        "Name": "MpesaReceiptNumber",
-                        "Value": "LGR7OWQX0R"
-                    },
-                    {
-                        "Name": "Balance"
-                    },
-                    {
-                        "Name": "TransactionDate",
-                        "Value": 20170727154800
-                    },
-                    {
-                        "Name": "PhoneNumber",
-                        "Value": 254721566839
-                    }
+                    {"Name": "Amount", "Value": 1},
+                    {"Name": "MpesaReceiptNumber", "Value": "LGR7OWQX0R"},
+                    {"Name": "Balance"},
+                    {"Name": "TransactionDate", "Value": 20170727154800},
+                    {"Name": "PhoneNumber", "Value": 254721566839},
                 ]
-            }
+            },
         }
     }
 }
@@ -127,5 +97,5 @@ PAYBILL_RESPONSE = {
     "MSISDN": "254708374149",
     "FirstName": "John",
     "MiddleName": "J.",
-    "LastName": "Doe"
+    "LastName": "Doe",
 }
