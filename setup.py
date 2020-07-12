@@ -14,7 +14,8 @@ setup(
         'Django (>=2.1.7)',
         'djangorestframework (>=3.7.3)',
         'celery (>=4.1.0)',
-        'requests (>=2.18.4)'
+        'requests (>=2.18.4)',
+        'python-decouple (>=3.3)'
     ],
     include_package_data=True,
     license='MIT License',
