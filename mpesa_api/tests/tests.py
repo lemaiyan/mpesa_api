@@ -42,7 +42,7 @@ def mock_requests_get(*args, **kwargs):
     :return:
     """
     url = kwargs["url"]
-    if url == f"{settings.MPESA_URL}/oauth/apis/get/generate-1":
+    if url == f"{settings.MPESA_URL}/oauth/v1/generate?grant_type=client_credentials":
         return MockResponse(mocks.SUCCESS_TOKEN_REQUEST, 200)
 
 
