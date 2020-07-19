@@ -37,7 +37,7 @@ class Mpesa:
             raise exceptions.UrlRegisterMpesaError(str(ex))
 
     @staticmethod
-    def stk_push(phone, amount, account_reference):
+    def stk_push(phone, amount, account_reference, is_paybill=True):
         """
         Initiates stk Push transaction
         Please note if you had registered the c2b urls this transaction will also be subjected to
@@ -55,6 +55,7 @@ class Mpesa:
                 amount=Decimal(str(amount)),
                 account_reference=account_reference,
                 transaction_description=uuid.uuid4().hex,
+                is_paybill=is_paybill
             )
         except Exception as ex:
             raise exceptions.StkPushMpesaError(str(ex))

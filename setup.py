@@ -15,7 +15,8 @@ setup(
         'djangorestframework (>=3.7.3)',
         'celery (>=4.1.0)',
         'requests (>=2.18.4)',
-        'python-decouple (>=3.3)'
+        'decouple (>=3.3)',
+        'django-admin-rangefilter (>=0.6.1)'
     ],
     include_package_data=True,
     license='MIT License',
