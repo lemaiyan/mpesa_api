@@ -9,7 +9,7 @@ def get_token(type):
     :param: type: whether we are fetching token for B2C or C2B
     :return: JSON
     """
-    url = f"{settings.MPESA_URL}/oauth/apis/get/generate-1"
+    url = f"{settings.MPESA_URL}/oauth/v1/generate?grant_type=client_credentials"
     concat_str = "{}:{}".format(
         settings.MPESA_C2B_ACCESS_KEY, settings.MPESA_C2B_CONSUMER_SECRET
     )
