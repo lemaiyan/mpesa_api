@@ -16,7 +16,7 @@ setup(
         'celery (>=4.1.0)',
         'requests (>=2.18.4)',
         'decouple (>=3.3)',
-        'django-admin-rangefilter (>=0.6.1)'
+        'rangefilter (>=0.6.1)'
     ],
     include_package_data=True,
     license='MIT License',
