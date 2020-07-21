@@ -43,7 +43,7 @@ def process_online_checkout(
     :return:
     """
     transaction_type = "CustomerPayBillOnline"
-    if is_paybil:
+    if not is_paybil:
         transaction_type = "CustomerBuyGoodsOnline"
 
     url = f"{settings.MPESA_URL}/mpesa/stkpush/v1/processrequest"
