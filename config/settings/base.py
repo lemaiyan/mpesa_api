@@ -217,4 +217,4 @@ C2B_ONLINE_PASSKEY = config('C2B_ONLINE_PASSKEY', default='')
 C2B_ONLINE_SHORT_CODE = config('C2B_ONLINE_SHORT_CODE', default='')
 # number of seconds from the expiry we consider the token expired the token expires after an hour
 # so if the token is 600 sec (10 minutes) to expiry we consider the token expired.
-TOKEN_THRESHOLD = config('TOKEN_THRESHOLD', default='')
+TOKEN_THRESHOLD = config('TOKEN_THRESHOLD', default=600, cast=int)
