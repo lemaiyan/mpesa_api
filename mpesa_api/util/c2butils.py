@@ -73,7 +73,7 @@ def process_online_checkout(
         TransactionType=transaction_type,
         Amount=str(amount),
         PartyA=str(msisdn),
-        PartyB=settings.C2B_ONLINE_SHORT_CODE,
+        PartyB=settings.C2B_ONLINE_PARTY_B,
         PhoneNumber=str(msisdn),
         CallBackURL=settings.C2B_ONLINE_CHECKOUT_CALLBACK_URL,
         AccountReference=account_reference,

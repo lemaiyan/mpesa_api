@@ -108,8 +108,10 @@ C2B_ONLINE_CHECKOUT_CALLBACK_URL = config('C2B_ONLINE_CHECKOUT_CALLBACK_URL')
 # The Pass Key provided by Safaricom when you pass UAT's
 # See https://developer.safaricom.co.ke/test_credentials
 C2B_ONLINE_PASSKEY = config('C2B_ONLINE_PASSKEY')
-# Your Paybill
-C2B_ONLINE_SHORT_CODE = config('C2B_ONLINE_SHORT_CODE')
+# Your Short code
+C2B_ONLINE_SHORT_CODE = config('C2B_ONLINE_SHORT_CODE', default='')
+# your paybill or till number
+C2B_ONLINE_PARTY_B = config('C2B_ONLINE_PARTY_B', default='')
 # number of seconds from the expiry we consider the token expired the token expires after an hour
 # so if the token is 600 sec (10 minutes) to expiry we consider the token expired.
 TOKEN_THRESHOLD = config('TOKEN_THRESHOLD')
@@ -188,7 +190,7 @@ Below are some samples
 Mpesa.b2c_request(254700000000, 100) # starts a b2c payment
 Mpesa.c2b_register_url() # registers the validate and confirmation url's for b2c
 # starts online checkout on given number 
-Mpesa.stk_push(254700000000, 100, account_reference='', transaction_desc='')
+Mpesa.stk_push(254700000000, 100, account_reference='', transaction_desc='', is_paybill=True)
 ```
 
 You can view your transaction under django Admin.
