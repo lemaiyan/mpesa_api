@@ -39,7 +39,7 @@ services:
       - db
       - rabbitmq
   db:
-    image: postgres:12.3-alpine
+    image: postgres:12-alpine
     environment:
       - POSTGRES_DB=$DB_NAME
       - POSTGRES_PASSWORD=$DB_PASSWORD
@@ -48,7 +48,7 @@ services:
     ports:
       - 5432:5432
   rabbitmq:
-    image: rabbitmq:3.8.5-management #this has management plugin enabled
+    image: rabbitmq:management-alpine #this has management plugin enabled
     ports:
       - 15672:15672
       - 5671:5671
