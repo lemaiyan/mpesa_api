@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("core", "0009_onlinecheckout"),
+        ("mpesa_core", "0009_onlinecheckout"),
     ]
 
     operations = [

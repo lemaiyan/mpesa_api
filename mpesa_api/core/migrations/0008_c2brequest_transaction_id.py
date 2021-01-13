@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("core", "0007_remove_c2brequest_transaction_id"),
+        ("mpesa_core", "0007_remove_c2brequest_transaction_id"),
     ]
 
     operations = [
