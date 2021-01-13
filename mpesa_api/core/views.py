@@ -1,6 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
 
 from mpesa_api.core.tasks import (
     process_b2c_result_response_task,
@@ -14,6 +15,7 @@ class B2cTimeOut(APIView):
     """
     Handle b2c time out
     """
+    permission_classes = [AllowAny]
 
     @csrf_exempt
     def post(self, request, format=None):
@@ -31,6 +33,7 @@ class B2cResult(APIView):
     """
     Handle b2c result
     """
+    permission_classes = [AllowAny]
 
     @csrf_exempt
     def post(self, request, format=None):
@@ -51,6 +54,7 @@ class C2bValidation(APIView):
     """
     Handle c2b Validation
     """
+    permission_classes = [AllowAny]
 
     @csrf_exempt
     def post(self, request, format=None):
@@ -71,6 +75,7 @@ class C2bConfirmation(APIView):
     """
     Handle c2b Confirmation
     """
+    permission_classes = [AllowAny]
 
     @csrf_exempt
     def post(self, request, format=None):
@@ -91,6 +96,7 @@ class OnlineCheckoutCallback(APIView):
     """
     Handle online checkout callback
     """
+    permission_classes = [AllowAny]
 
     @csrf_exempt
     def post(self, request, format=None):
