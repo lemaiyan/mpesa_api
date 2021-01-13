@@ -41,10 +41,12 @@ Add the following in the `urls.py`
 ```python
 urlpatterns = [
     ...
-    path('mpesa/', include('mpesa_api.core.urls', 'mpesa')),
+    path('daraja/', include('mpesa_api.core.urls', 'mpesa')),
     ...
 ]
 ```
+daraja api rejects all callback & registration urls with the word 'mpesa' and its variations.
+With this in mind ensure you also change the .env accordingly
 Add the following to installed apps
 
 ```python

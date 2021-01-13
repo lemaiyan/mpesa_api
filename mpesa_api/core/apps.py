@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 
 class CoreConfig(AppConfig):
     name = "mpesa_api.core"
-    label = "core"
+    label = "mpesa_core"
     verbose_name = "MPESA API CORE"
 
     def ready(self):
