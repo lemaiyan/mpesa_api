@@ -194,7 +194,7 @@ and also keeps track of the callbacks and the values are stored in the database 
 Below are some samples
 ```python
 Mpesa.b2c_request(254700000000, 100) # starts a b2c payment
-Mpesa.c2b_register_url() # registers the validate and confirmation url's for b2c
+Mpesa.c2b_register_url() # registers the validate and confirmation url's for c2b
 # starts online checkout on given number 
 Mpesa.stk_push(254700000000, 100, account_reference='', transaction_desc='', is_paybill=True)
 ```
