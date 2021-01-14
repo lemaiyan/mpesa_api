@@ -86,7 +86,7 @@ def process_b2c_result_response_task(response):
                 elif key == "B2CWorkingAccountAvailableFunds":
                     update_data["working_funds"] = value
                 elif key == "B2CUtilityAccountAvailableFunds":
-                    rupdate_data["utility_funds"] = value
+                    update_data["utility_funds"] = value
                 elif key == "B2CChargesPaidAccountAvailableFunds":
                     update_data["paid_account_funds"] = value
                 elif key == "TransactionCompletedDateTime":

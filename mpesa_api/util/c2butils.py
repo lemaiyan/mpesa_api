@@ -81,3 +81,33 @@ def process_online_checkout(
     )
     response = post(url=url, headers=headers, data=body)
     return response.json()
+
+def lipa_na_mpesa_online_query(checkout_request_id):
+    url = f"{settings.MPESA_URL}/mpesa/stkpushquery/v1/query"
+    headers = {
+        "Authorization": "Bearer {}".format(AuthToken.objects.get_token("c2b"))
+    }
+    timestamp = (
+        str(datetime.now())[:-7]
+            .replace("-", "")
+            .replace(" ", "")
+            .replace(":", "")
+    )
+    password = base64.b64encode(
+        bytes(
+            "{}{}{}".format(
+                settings.C2B_ONLINE_SHORT_CODE,
+                settings.C2B_ONLINE_PASSKEY,
+                timestamp,
+            ),
+            "utf-8",
+        )
+    ).decode("utf-8")
+    body = dict(
+        BusinessShortCode=settings.C2B_ONLINE_SHORT_CODE,
+        Password=password,
+        Timestamp=timestamp,
+        CheckoutRequestID=checkout_request_id
+    )
+    response = post(url=url, headers=headers, data=body)
+    return response.json()

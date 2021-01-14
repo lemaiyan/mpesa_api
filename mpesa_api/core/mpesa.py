@@ -61,3 +61,13 @@ class Mpesa:
             )
         except Exception as ex:
             raise exceptions.StkPushMpesaError(str(ex))
+
+    @staticmethod
+    def stk_push_query(checkout_request_id):
+        """
+
+        :param checkout_request_id:
+        :return:
+        """
+        return c2butils.lipa_na_mpesa_online_query(checkout_request_id)
+
