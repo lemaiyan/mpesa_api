@@ -21,9 +21,6 @@ If you have a free pair of hands let me know.
 `pip install mpesa-api` or 
 `pip install -e git+https://github.com/lemaiyan/mpesa_api.git#egg=mpesa_api`
 
-## Installation(Forked Version)
-
-`pip install -e git+https://github.com/r34g4n/mpesa_api.git#egg=mpesa_api`
 
 
 ## Requirements 
