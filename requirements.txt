@@ -4,7 +4,7 @@ psycopg2-binary==2.8.5
 requests==2.24.0
 celery==4.4.6
 ipdb==0.13.3
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 django-admin-rangefilter==0.6.1
 coverage==5.2
 python-decouple==3.3
