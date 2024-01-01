@@ -71,7 +71,7 @@ B2C_SECURITY_TOKEN =  config('B2C_SECURITY_TOKEN')
 B2C_INITIATOR_NAME = config('B2C_INITIATOR_NAME')
 # CommandID
 B2C_COMMAND_ID = config('B2C_COMMAND_ID')
-#PartyA
+#PartyA, it can be the paybil or till number.
 B2C_SHORTCODE = config('B2C_SHORTCODE')
 # this is the url where Mpesa  will post in case of a time out. Replace http://mpesa.ngrok.io/  with your url ow here this app is running
 B2C_QUEUE_TIMEOUT_URL = config('B2C_QUEUE_TIMEOUT_URL')
